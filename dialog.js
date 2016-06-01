@@ -3,9 +3,8 @@ const electron = require('electron');
 const {app} = electron;
 // Module to create native browser window.
 const {BrowserWindow} = electron;
-
-const ipcMain = electron.ipcMain;
-
+const {ipcMain} = electron;
+const {dialog} = electron
 var fs = require('fs');
 
 var configContent = fs.readFileSync('./package.json', 'utf8');
@@ -32,6 +31,9 @@ function createWindow() {
     // when you should delete the corresponding element.
     win = null;
   });
+
+  //dialog.showMessageBox(win, {title: 'My Message Title', message: 'My Message content', buttons: ['Ok', 'Cancel']});
+  dialog.showErrorBox('My Message Title', 'My Message content');
 }
 
 // This method will be called when Electron has finished
